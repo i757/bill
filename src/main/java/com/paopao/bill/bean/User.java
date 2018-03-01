@@ -1,14 +1,28 @@
 package com.paopao.bill.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author luoxiaozhu
  * @date 2018-2-28-0028 17:24
  */
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
     private String id;
-    private String account;
+
+//    @Column(name = "account")
+//    private String account;
+
+    @Column(name = "name")
     private String name;
-    private String password;
+
+//    @Column(name = "password")
+//    private String password;
 
     public String getId() {
         return id;
@@ -18,13 +32,13 @@ public class User {
         this.id = id;
     }
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
+//    public String getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(String account) {
+//        this.account = account;
+//    }
 
     public String getName() {
         return name;
@@ -34,11 +48,11 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 }

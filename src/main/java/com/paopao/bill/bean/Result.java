@@ -1,13 +1,27 @@
 package com.paopao.bill.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author luoxiaozhu
  * @date 2018-2-28-0028 17:28
  */
+@Entity
+@Table(name = "result")
 public class Result {
+    @Id
     private String id;
+
+    @Column(name = "year")
     private int year;
+
+    @Column(name = "month")
     private int month;
+
+    @Column(name = "avg")
     private double avg;
 
     public String getId() {

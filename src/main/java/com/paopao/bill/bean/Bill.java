@@ -1,16 +1,34 @@
 package com.paopao.bill.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author luoxiaozhu
  * @date 2018-2-28-0028 17:25
  */
+@Entity
+@Table(name = "bill")
 public class Bill {
+    @Id
     private String id;
+
+    @Column(name = "userId")
     private String userId;
+
+    @Column(name = "money")
     private double money;
+
+    @Column(name = "desc")
     private String desc;
+
+    @Column(name = "time")
     private String time;
+
     /** 0:未结算，1:已结算 */
+    @Column(name = "status")
     private int status;
 
     public String getId() {

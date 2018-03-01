@@ -1,0 +1,42 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "504 bill api.",
+    "version": "1.0.0",
+    "title": "504账单",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "328949691@qq.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "http://localhost:8080",
+  "basePath": "/bill",
+  "paths": {
+    "/user/findOne": {
+      "get": {
+        "summary": "根据id查找用户",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "用户id",
+            "required": true
+          }
+        ]
+      }
+    }
+  }
+}
