@@ -1,6 +1,6 @@
 package com.paopao.bill.controller;
 
-import com.paopao.bill.UserService;
+import com.paopao.bill.service.UserService;
 import com.paopao.bill.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

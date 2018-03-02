@@ -15,14 +15,14 @@ public class Bill {
     @Id
     private String id;
 
-    @Column(name = "userId")
+    @Column(name = "userid")
     private String userId;
 
     @Column(name = "money")
     private double money;
 
-    @Column(name = "desc")
-    private String desc;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "time")
     private String time;
@@ -30,6 +30,17 @@ public class Bill {
     /** 0:未结算，1:已结算 */
     @Column(name = "status")
     private int status;
+
+    @Column(name = "submittime")
+    private String submitTime;
+
+    public String getSubmitTime() {
+        return submitTime;
+    }
+
+    public void setSubmitTime(String submitTime) {
+        this.submitTime = submitTime;
+    }
 
     public String getId() {
         return id;
@@ -55,12 +66,12 @@ public class Bill {
         this.money = money;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTime() {

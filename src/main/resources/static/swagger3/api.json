@@ -20,14 +20,6 @@
       "get": {
         "summary": "根据id查找用户",
         "description": "",
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",

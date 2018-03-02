@@ -1,4 +1,4 @@
-package com.paopao.bill;
+package com.paopao.bill.service;
 
 import com.paopao.bill.bean.User;
 import com.paopao.bill.dao.UserRepository;
