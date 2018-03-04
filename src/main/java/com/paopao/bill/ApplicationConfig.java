@@ -1,8 +1,10 @@
 package com.paopao.bill;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -27,4 +29,8 @@ public class ApplicationConfig {
         return dataSource;
     }
 
+    @Bean
+    public MessageSource messageSource(){
+        return new ReloadableResourceBundleMessageSource();
+    }
 }

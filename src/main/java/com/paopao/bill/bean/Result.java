@@ -24,6 +24,9 @@ public class Result {
     @Column(name = "avg")
     private double avg;
 
+    @Column(name = "resultTime")
+    private String resultTime;
+
     public String getId() {
         return id;
     }
@@ -54,5 +57,13 @@ public class Result {
 
     public void setAvg(double avg) {
         this.avg = avg;
+    }
+
+    public String getResultTime() {
+        return resultTime;
+    }
+
+    public void setResultTime(String resultTime) {
+        this.resultTime = resultTime;
     }
 }

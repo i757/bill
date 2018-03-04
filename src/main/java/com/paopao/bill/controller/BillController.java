@@ -7,6 +7,7 @@ import com.paopao.bill.util.ApiException;
 import com.paopao.bill.util.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,13 +22,15 @@ import java.util.Map;
  * @date 2018-3-2-0002 11:11
  */
 @Controller
-@RequestMapping("/bills")
+@RequestMapping("/bill")
 public class BillController {
 
     @Autowired
     private BillService billService;
 
     @RequestMapping(value = "",method = RequestMethod.POST)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void saveBill(@RequestBody Bill bill){
         bill.setId(ApiUtils.getUUID());
         bill.setSubmitTime(ApiUtils.now());
@@ -39,13 +42,14 @@ public class BillController {
     public Bill getBill(@PathVariable String id){
         Bill bill = billService.getBill(id);
         if(bill == null){
-            throw  new ApiException(Constants.BILL_NOT_EXIST);
+            throw new ApiException(Constants.BILL_NOT_EXIST);
         }
         return bill;
     }
 
     @RequestMapping(value = "",method = RequestMethod.PUT)
     @ResponseBody
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void modifyBill(@RequestBody Bill bean){
         Bill bill = billService.getBill(bean.getId());
         if(bill == null){
@@ -55,6 +59,8 @@ public class BillController {
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteBill(@PathVariable String id){
         billService.deleteBill(id);
     }

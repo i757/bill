@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author luoxiaozhu
@@ -28,7 +30,7 @@ public class BillService {
     }
 
     public Bill getBill(String id){
-        return billRepository.getOne(id);
+        return billRepository.findById(id);
     }
 
     public void deleteBill(String id){
@@ -36,7 +38,9 @@ public class BillService {
     }
 
     public List<Bill> billList(String time) {
-        return billMapper.billList(time);
+        Map<String,String> map = new HashMap<>();
+        map.put("time",time);
+        return billMapper.billList(map);
     }
 
     public List<String> getBillTime(){
