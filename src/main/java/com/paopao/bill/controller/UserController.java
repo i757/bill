@@ -2,9 +2,12 @@ package com.paopao.bill.controller;
 
 import com.paopao.bill.service.UserService;
 import com.paopao.bill.bean.User;
+import com.paopao.bill.util.ApiException;
+import com.paopao.bill.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,29 +22,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/findOne")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public User findOne(@RequestParam String id){
-        User user = userService.findOne(id);
+    public User login(@RequestParam String account,@RequestParam String password){
+        User user = userService.findByAccountAndPassword(account,password);
+        if(user == null){
+            throw new ApiException(Constants.USER_NOT_EXIST);
+        }
+        user.setPassword("");
         return user;
-    }
-
-    @RequestMapping("/getUser")
-    @ResponseBody
-    public User getUser(@RequestParam String id){
-        return userService.getUser(id);
-    }
-
-    @RequestMapping("/findByName")
-    @ResponseBody
-    public User findByName(@RequestParam String name){
-        return userService.findByName(name);
-    }
-
-    @RequestMapping("/selectUser")
-    @ResponseBody
-    public User selectUser(@RequestParam String account, @RequestParam String name){
-        return userService.selectUser(account, name);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.paopao.bill.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,7 +12,8 @@ import javax.persistence.Table;
  * @date 2018-2-28-0028 18:10
  */
 @Entity
-@Table(name = "inout")
+@Table(name = "inoutmoney")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class InOut {
     @Id
     private String id;
@@ -21,11 +24,11 @@ public class InOut {
     @Column(name = "userId")
     private String userId;
 
-    @Column(name = "in")
-    private double in;
+    @Column(name = "inMoney")
+    private double inMoney;
 
-    @Column(name = "out")
-    private double out;
+    @Column(name = "outMoney")
+    private double outMoney;
 
     public String getId() {
         return id;
@@ -51,19 +54,19 @@ public class InOut {
         this.userId = userId;
     }
 
-    public double getIn() {
-        return in;
+    public double getInMoney() {
+        return inMoney;
     }
 
-    public void setIn(double in) {
-        this.in = in;
+    public void setInMoney(double inMoney) {
+        this.inMoney = inMoney;
     }
 
-    public double getOut() {
-        return out;
+    public double getOutMoney() {
+        return outMoney;
     }
 
-    public void setOut(double out) {
-        this.out = out;
+    public void setOutMoney(double outMoney) {
+        this.outMoney = outMoney;
     }
 }

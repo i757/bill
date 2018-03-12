@@ -6,4 +6,6 @@ package com.paopao.bill.util;
  */
 public class Constants {
     public static final String BILL_NOT_EXIST = "api.activity.not.exist";
+    public static final String NO_BILL_RESULT = "api.no.bill.result";
+    public static final String USER_NOT_EXIST = "api.user.not.exist";
 }

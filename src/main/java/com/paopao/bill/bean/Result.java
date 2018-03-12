@@ -1,5 +1,7 @@
 package com.paopao.bill.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "result")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class Result {
     @Id
     private String id;

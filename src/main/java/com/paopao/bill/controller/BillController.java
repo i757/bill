@@ -68,8 +68,8 @@ public class BillController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
     public List<Bill> billList(String time){
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM");
         if(StringUtils.isBlank(time)){
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM");
             time = f.format(new Date());
         }
         return billService.billList(time);

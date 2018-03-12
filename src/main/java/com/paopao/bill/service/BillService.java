@@ -1,6 +1,7 @@
 package com.paopao.bill.service;
 
 import com.paopao.bill.bean.Bill;
+import com.paopao.bill.bean.UserMoney;
 import com.paopao.bill.dao.BillRepository;
 import com.paopao.bill.dao.mapper.BillMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,9 @@ public class BillService {
 
     public List<String> getBillTime(){
         return billMapper.getBillTime();
+    }
+
+    public List<UserMoney> getUserMoney(String time){
+        return billMapper.getUserMoney(time);
     }
 }

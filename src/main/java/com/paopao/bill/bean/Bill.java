@@ -32,8 +32,11 @@ public class Bill {
     private String time;
 
     /** 0:未结算，1:已结算 */
-    @Column(name = "status")
-    private int status;
+    @Column(name = "flag")
+    private int flag;
+
+    @Column(name = "flagTime")
+    private String flagTime;
 
     @Column(name = "submitTime")
     private String submitTime;
@@ -86,11 +89,19 @@ public class Bill {
         this.time = time;
     }
 
-    public int getStatus() {
-        return status;
+    public int getFlag() {
+        return flag;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public String getFlagTime() {
+        return flagTime;
+    }
+
+    public void setFlagTime(String flagTime) {
+        this.flagTime = flagTime;
     }
 }

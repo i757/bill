@@ -1,15 +1,18 @@
 package com.paopao.bill;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import javax.transaction.TransactionManager;
 
 /**
  * @author luoxiaozhu
@@ -30,7 +33,16 @@ public class ApplicationConfig {
     }
 
     @Bean
+    public DataSourceTransactionManager transactionManager(@Qualifier(value = "dataSource") DataSource dataSource){
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
+    }
+
+    @Bean
     public MessageSource messageSource(){
-        return new ReloadableResourceBundleMessageSource();
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("message");
+        return messageSource;
     }
 }
