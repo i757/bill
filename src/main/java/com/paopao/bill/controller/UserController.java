@@ -1,15 +1,13 @@
 package com.paopao.bill.controller;
 
+import com.paopao.bill.bean.UserLogin;
 import com.paopao.bill.service.UserService;
 import com.paopao.bill.bean.User;
 import com.paopao.bill.util.ApiException;
 import com.paopao.bill.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author luoxiaozhu
@@ -24,8 +22,8 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public User login(@RequestParam String account,@RequestParam String password){
-        User user = userService.findByAccountAndPassword(account,password);
+    public User login(@RequestBody UserLogin bean){
+        User user = userService.findByAccountAndPassword(bean.getAccount(),bean.getPassword());
         if(user == null){
             throw new ApiException(Constants.USER_NOT_EXIST);
         }
