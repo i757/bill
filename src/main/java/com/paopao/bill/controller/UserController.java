@@ -1,6 +1,6 @@
 package com.paopao.bill.controller;
 
-import com.paopao.bill.bean.UserLogin;
+import com.paopao.bill.bean.pojo.UserLogin;
 import com.paopao.bill.service.UserService;
 import com.paopao.bill.bean.User;
 import com.paopao.bill.util.ApiException;

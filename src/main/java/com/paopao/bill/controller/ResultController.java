@@ -9,13 +9,11 @@ import com.paopao.bill.service.UserService;
 import com.paopao.bill.util.ApiException;
 import com.paopao.bill.util.ApiUtils;
 import com.paopao.bill.util.Constants;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -36,15 +34,15 @@ public class ResultController {
     @Autowired
     private BillService billService;
 
-    @RequestMapping(value = "/settle",method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "/settle",method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void result(String time){
+    public void result(@RequestParam String time){
         String resultId = ApiUtils.getUUID();
         String resultTime = ApiUtils.now();
         Result result = new Result();
         result.setId(resultId);
         result.setResultTime(resultTime);
+
         String[] strs = time.split("-");
         result.setMonth(Integer.parseInt(strs[1]));
         result.setYear(Integer.parseInt(strs[0]));

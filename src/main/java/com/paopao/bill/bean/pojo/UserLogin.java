@@ -1,4 +1,4 @@
-package com.paopao.bill.bean;
+package com.paopao.bill.bean.pojo;
 
 public class UserLogin {
     private String account;

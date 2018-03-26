@@ -1,6 +1,10 @@
 package com.paopao.bill.controller;
 
 import com.paopao.bill.bean.Bill;
+import com.paopao.bill.bean.Result;
+import com.paopao.bill.bean.pojo.BillGet;
+import com.paopao.bill.bean.pojo.InOutBean;
+import com.paopao.bill.bean.pojo.ResultBean;
 import com.paopao.bill.service.BillService;
 import com.paopao.bill.util.ApiUtils;
 import com.paopao.bill.util.ApiException;
@@ -67,7 +71,7 @@ public class BillController {
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
-    public List<Bill> billList(String time){
+    public List<BillGet> billList(String time){
         if(StringUtils.isBlank(time)){
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM");
             time = f.format(new Date());
@@ -77,16 +81,20 @@ public class BillController {
 
     @RequestMapping(value = "/history",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,List<Bill>> billHistory(){
-        List<String> times = billService.getBillTime();
-        Map<String,List<Bill>> map = new HashMap<>();
-        if(times != null){
-            for(String time : times){
-                time = ApiUtils.dataFormat(time);
-                List<Bill> list = billService.billList(time);
-                map.put(time,list);
-            }
-        }
-        return map;
+    public List<Result> billHistory(){
+        List<Result> results = billService.getResult();
+        return results;
+    }
+
+    @RequestMapping(value = "/history/detail",method = RequestMethod.GET)
+    @ResponseBody
+    public Object historyDetail(@RequestParam String id){
+        ResultBean bean = new ResultBean();
+        Result result = billService.findResult(id);
+        bean.setAvg(result.getAvg());
+        bean.setResultTime(result.getResultTime());
+        List<InOutBean> list = billService.getInOuts(id);
+        bean.setList(list);
+        return bean;
     }
 }
